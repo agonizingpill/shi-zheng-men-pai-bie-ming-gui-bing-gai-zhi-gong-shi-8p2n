@@ -7,4 +7,6 @@ def locate(s,id,d):
 def alias(s,d):
  lock(s);get(s,Entrance,d['entrance_id']);x=Alias(**d);s.add(x);s.flush();return x
 def evidence(s,d):
- lock(s);get(s,Alias,d['alias_id']);x=Evidence(**d);s.add(x);s.flush();return x
+ lock(s);get(s,Alias,d['alias_id'])
+ if d.get('dated'):day(d['dated'])
+ x=Evidence(**d);s.add(x);s.flush();return x

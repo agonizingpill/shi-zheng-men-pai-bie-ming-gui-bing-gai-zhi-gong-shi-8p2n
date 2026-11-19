@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy import select
 from .models import Registry,Audit
-from datetime import datetime
+from datetime import datetime,date
 def fail(msg):raise HTTPException(409,msg)
 def get(s,cls,id):
  x=s.get(cls,id)
@@ -14,3 +14,6 @@ def dump(x):return {c.name:getattr(x,c.name) for c in x.__table__.columns}
 def timestamp(v):
  try:return datetime.fromisoformat(v).replace(tzinfo=None)
  except ValueError:fail('时间必须为ISO格式')
+def day(v):
+ try:return date.fromisoformat(v)
+ except (ValueError,TypeError):fail('日期必须为YYYY-MM-DD格式')

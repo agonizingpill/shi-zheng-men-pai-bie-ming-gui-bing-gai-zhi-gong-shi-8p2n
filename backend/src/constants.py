@@ -1,2 +1,5 @@
 ROLES=('operator','supervisor','viewer')
-PROPOSAL_STATES=('draft','public','active','rejected','rolled_back')
+PROPOSAL_STATES=('draft','public','active','rejected','rolled_back','returned')
+RENAME_STATES=('active','corrected')
+RENAME_KINDS=('rename','split')
+CANDIDATE_STATES=('ranked','pending','confirmed','rejected')
